@@ -2,7 +2,7 @@ import sys
 import os
 import pytest
 
-current = os.path.dirname(os.path.realpath('__file__'))
+current = os.getcwd()
 parent = os.path.dirname(current)
 sys.path.append(parent)
 

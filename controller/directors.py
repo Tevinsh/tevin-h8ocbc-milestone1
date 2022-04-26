@@ -3,9 +3,9 @@ Directors Controller
 """
 import os
 import sys
-current = os.path.dirname(os.path.realpath('__file__'))
+current = os.getcwd()
 parent = os.path.dirname(current)
-modelpath = os.path.dirname(current)+'\model'
+modelpath = os.path.dirname(current)+'/model'
 sys.path.append(parent)
 sys.path.append(modelpath)
 sys.path.append(current)

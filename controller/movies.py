@@ -5,9 +5,9 @@ import os
 import sys
 
 import sqlalchemy
-current = os.path.dirname(os.path.realpath('__file__'))
+current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
-modelpath = os.path.dirname(current)+'\model'
+modelpath = os.path.dirname(current)+'/model'
 sys.path.append(parent)
 sys.path.append(modelpath)
 sys.path.append(current)
