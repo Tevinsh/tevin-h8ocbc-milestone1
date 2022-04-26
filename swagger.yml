@@ -14,7 +14,7 @@ basePath: /api
 paths:
   /director/{director_id}/movies:
     get:
-      operationId: movies.get_director_movies
+      operationId: controller.movies.get_director_movies
       tags:
        - directors
       summary: Get all movie details from director_id
@@ -30,16 +30,27 @@ paths:
           description: Successfully read all directors movies
   /directors:
     get:
-      operationId: directors.get_all
+      operationId: controller.directors.get_all
       tags:
         - directors
       summary: Get all of directors data
       description: Read all Directors data
+      parameters:
+        - name: limit
+          in: query
+          type: integer
+          # x-nullable: True
+          # required: True
+        - name: offset
+          in: query
+          type: integer
+          # x-nullable: True
+          # required: True
       responses:
         200:
           description: Successfully read all directors data
     post:
-      operationId: directors.post
+      operationId: controller.directors.post
       tags:
         - directors
       summary: post a director data
@@ -72,7 +83,7 @@ paths:
 
   /directors/{id}:
     get:
-      operationId: directors.get_one
+      operationId: controller.directors.get_one
       tags:
         - directors
       summary: Get One Director Details based on id
@@ -87,7 +98,7 @@ paths:
         200:
           description: Successfully get director data
     put:
-      operationId: directors.update
+      operationId: controller.directors.update
       tags:
         - directors
       summary: update director
@@ -120,7 +131,7 @@ paths:
         200:
           description: Successfully read people set operation
     delete:
-      operationId: directors.delete
+      operationId: controller.directors.delete
       tags:
         - directors
       summary: Get One Director Details based on id
@@ -139,7 +150,7 @@ paths:
      
   /movies/{movies_id}/directordetail:
     get:
-      operationId: movies.get_director_from_movies
+      operationId: controller.movies.get_director_from_movies
       tags:
        - movies
       summary: Get all movie details from director_id
@@ -155,18 +166,25 @@ paths:
           description: Successfully read all directors movies
   /movies:
     get:
-      operationId: movies.get_all
+      operationId: controller.movies.get_all
       tags:
         - movies
       summary: Get all movies data from table movies
       description: Get details of movie data from table movies
+      parameters:
+        - name: limit
+          in: query
+          type: integer
+        - name: offset
+          in: query
+          type: integer
       responses:
         200:
           description: Successfully get movies data
     
   /movies/{id}:
     get:
-      operationId: movies.get_one
+      operationId: controller.movies.get_one
       tags:
         - movies
       summary: Read only one movies
@@ -196,7 +214,7 @@ paths:
         200:
           description: Succesfully delete Movies
     put:
-      operationId: movies.put
+      operationId: controller.movies.put
       tags:
        - movies
       summary: Update movies
@@ -255,7 +273,7 @@ paths:
 
   /movies/{director_id}:
     post:
-      operationId: movies.post
+      operationId: controller.movies.post
       tags:
         - movies
       summary: Create new Director's movies based on director's id
