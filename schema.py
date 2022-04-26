@@ -4,10 +4,10 @@ from marshmallow import fields
 class Directors(db.Model):
     __tablename__ = 'directors'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    gender = db.Column(db.Integer)
-    uid = db.Column(db.Integer)
-    department = db.Column(db.String)
+    name = db.Column(db.String(32), nullable=False)
+    gender = db.Column(db.Integer, nullable=False)
+    uid = db.Column(db.Integer, nullable=False)
+    department = db.Column(db.String(32), nullable=False)
     movies = db.relationship(
         'Movies',
         backref='directors',
@@ -19,18 +19,18 @@ class Directors(db.Model):
 class Movies(db.Model):
     __tablename__ = 'movies'
     id = db.Column(db.Integer, primary_key=True)
-    original_title = db.Column(db.String)
-    budget = db.Column(db.Integer)
-    popularity = db.Column(db.Integer)
-    release_date = db.Column(db.String)
-    revenue = db.Column(db.Integer)
-    title = db.Column(db.String)
-    vote_average = db.Column(db.Integer)
-    vote_count = db.Column(db.Integer)
-    overview = db.Column(db.String)
-    tagline = db.Column(db.String)
-    uid = db.Column(db.Integer)
-    director_id = db.Column(db.Integer,db.ForeignKey('directors.id'))
+    original_title = db.Column(db.String(32),nullable=False)
+    budget = db.Column(db.Integer,nullable=False)
+    popularity = db.Column(db.Integer,nullable=False)
+    release_date = db.Column(db.String(32),nullable=False)
+    revenue = db.Column(db.Integer,nullable=False)
+    title = db.Column(db.String(32),nullable=False)
+    vote_average = db.Column(db.Integer,nullable=False)
+    vote_count = db.Column(db.Integer,nullable=False)
+    overview = db.Column(db.String(1000),nullable=False)
+    tagline = db.Column(db.String(1000),nullable=False)
+    uid = db.Column(db.Integer,nullable=False)
+    director_id = db.Column(db.Integer,db.ForeignKey('directors.id'),nullable=False)
 
 class DirectorsSchema(ma.SQLAlchemyAutoSchema):
     # def __init__(self, **kwargs):

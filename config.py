@@ -2,6 +2,7 @@ import os
 import connexion
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+import pymysql
 
 print('----------------------------------------config run')
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -14,7 +15,8 @@ app = connex_app.app
 
 # Configure the SQLAlchemy part of the app instance
 app.config['SQLALCHEMY_ECHO'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///final_proj.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///final_proj.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:pangeran123@localhost/sample_database'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Create the SQLAlchemy db instance

@@ -1,8 +1,8 @@
 swagger: "2.0"
 info:
-  description: This is the swagger file that goes with our server code
+  description: crud api for table movies and director
   version: "1.0.0"
-  title: Swagger Rest Article
+  title: Rest api Movies
 consumes:
   - application/json
 produces:
@@ -12,6 +12,22 @@ basePath: /api
 
 # Paths supported by the server application
 paths:
+  /director/{director_id}/movies:
+    get:
+      operationId: movies.get_director_movies
+      tags:
+       - directors
+      summary: Get all movie details from director_id
+      description: Get director's movies
+      parameters:
+        - name: director_id
+          in: path
+          description: Id of director to get
+          type: integer
+          required: True
+      responses:
+        200:
+          description: Successfully read all directors movies
   /directors:
     get:
       operationId: directors.get_all
@@ -35,9 +51,9 @@ paths:
           schema:
             type: object
             properties:
-              id:
-                type: integer
-                description: Id of Director
+              # id:
+              #   type: integer
+              #   description: Id of Director
               name:
                 type: string
                 description: Name of director
@@ -118,7 +134,25 @@ paths:
       responses:
         200:
           description: Successfully read people set operation
-            
+
+
+     
+  /movies/{movies_id}/directordetail:
+    get:
+      operationId: movies.get_director_from_movies
+      tags:
+       - movies
+      summary: Get all movie details from director_id
+      description: Get director's movies
+      parameters:
+        - name: movies_id
+          in: path
+          description: Id of movies to get
+          type: integer
+          required: True
+      responses:
+        200:
+          description: Successfully read all directors movies
   /movies:
     get:
       operationId: movies.get_all
@@ -179,9 +213,9 @@ paths:
           schema:
             type: object
             properties:
-              id:
-                type: integer
-                description: movies id
+              # id:
+              #   type: integer
+              #   description: movies id
               original_title:
                 type: string
                 description: Original title
@@ -238,9 +272,9 @@ paths:
         schema:
           type: object
           properties:
-            id:
-              type: integer
-              description: movies id
+            # id:
+            #   type: integer
+            #   description: movies id
             original_title:
               type: string
               description: Original title
