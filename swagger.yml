@@ -78,8 +78,8 @@ paths:
                 type: string
                 description: director's Department
       responses:
-        200:
-          description: Successfully read people set operation
+        201:
+          description: Successfully add new director
 
   /directors/{id}:
     get:
@@ -117,7 +117,7 @@ paths:
             properties:
               name:
                 type: string
-                description: First name of the person
+                description: Name of director
               gender:
                 type: integer
                 description: director gender
@@ -128,14 +128,14 @@ paths:
                 type: string
                 description: director's Department
       responses:
-        200:
-          description: Successfully read people set operation
+        201:
+          description: Successfully update director
     delete:
       operationId: controller.directors.delete
       tags:
         - directors
-      summary: Get One Director Details based on id
-      description: Read the entire set of people, sorted by last name
+      summary: delete director detail based on id
+      description: Delete director detail based on id
       parameters:
         - name: id
           in: path
@@ -143,7 +143,7 @@ paths:
           type: integer
           required: True
       responses:
-        200:
+        201:
           description: Successfully read people set operation
 
 
@@ -211,7 +211,7 @@ paths:
           type: integer
           required: True
       responses:
-        200:
+        201:
           description: Succesfully delete Movies
     put:
       operationId: controller.movies.put
