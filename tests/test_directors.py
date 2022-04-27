@@ -2,7 +2,7 @@ import sys
 import os
 import pytest
 
-current = os.getcwd()
+current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 sys.path.append(parent)
 
@@ -28,7 +28,7 @@ def test_get_all_movies(client):
     assert response.status_code == 200
 
 def test_home(client):
-    response = client.get('/')
+    response = client.get("/")
     assert response.status_code == 200
 
 def test_post_movies(client):
@@ -41,7 +41,7 @@ def test_post_movies(client):
             "revenue": 0,
             "tagline": "string",
             "title": "string",
-            "uid": 19823,
+            "uid": 98128323,
             "vote_average": 0,
             "vote_count": 0
     })

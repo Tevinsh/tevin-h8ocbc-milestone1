@@ -39,11 +39,13 @@ paths:
         - name: limit
           in: query
           type: integer
+          description: limit data
           # x-nullable: True
           # required: True
         - name: offset
           in: query
           type: integer
+          description: offset data
           # x-nullable: True
           # required: True
       responses:
@@ -139,12 +141,12 @@ paths:
       parameters:
         - name: id
           in: path
-          description: Id of the person to get
+          description: Id of director to delete
           type: integer
           required: True
       responses:
         201:
-          description: Successfully read people set operation
+          description: Successfully delete director
 
 
      
@@ -175,9 +177,11 @@ paths:
         - name: limit
           in: query
           type: integer
+          description: limit data
         - name: offset
           in: query
           type: integer
+          description: offset data
       responses:
         200:
           description: Successfully get movies data
