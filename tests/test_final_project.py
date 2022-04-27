@@ -19,17 +19,29 @@ def client():
     with flask_app.app.test_client() as c:
         yield c
 
+#directors
 def test_get_all_directors(client):
     response = client.get('/api/directors')
     assert response.status_code == 200
 
-def test_get_all_movies(client):
-    response = client.get('/api/movies')
+def test_case_get_all_directors_with_limit_offset(client):
+    response = client.get('/api/directors?limit=2&offset=2')
     assert response.status_code == 200
+    assert response.json["status"] == "success"
+    assert response.json["data"] is not None
 
-def test_home(client):
-    response = client.get("/")
+#movies
+def test_get_all_movies(client):
+    response = client.get('/api/movies')    
     assert response.status_code == 200
+    assert response.json["status"] == "success"
+    assert response.json["data"] is not None
+
+def test_case_get_all_movies_with_limit_offset(client):
+    response = client.get('/api/movies?limit=2&offset=2')
+    assert response.status_code == 200
+    assert response.json["status"] == "success"
+    assert response.json["data"] is not None
 
 def test_post_movies(client):
     response = client.post('/api/movies/5974', json={
@@ -41,7 +53,7 @@ def test_post_movies(client):
             "revenue": 0,
             "tagline": "string",
             "title": "string",
-            "uid": 98128323,
+            "uid": 9167238,
             "vote_average": 0,
             "vote_count": 0
     })
